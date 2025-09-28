@@ -1,6 +1,6 @@
 ﻿namespace Library;
 
-public interface Loanable
+public interface ILoanable
 {
     void LoanBook(User user);
 

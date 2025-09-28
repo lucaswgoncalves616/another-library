@@ -1,8 +1,15 @@
 ﻿namespace Library;
 
-public class Book : Loanable
+public class Book : ILoanable
 {
-    public String BookId { get; set; }
+    public int BookId { get; set; }
+    private static int bookNextId = 1;
+
+    public static int BookNextId
+    {
+        get => bookNextId;
+        set => bookNextId = value;
+    }
     public String Title { get; set; }
     public String Author { get; set; }
 
@@ -13,9 +20,9 @@ public class Book : Loanable
         set => isLoaned = value;
     }
 
-    public Book(string bookId, string title, string author)
+    public Book(string title, string author)
     {
-        BookId = bookId;
+        BookId = BookNextId++;
         Title = title;
         Author = author;
     }
@@ -28,5 +35,12 @@ public class Book : Loanable
     public void ReturnBook()
     {
         IsLoaned = false;
+    }
+    
+    public override string ToString()
+    {
+        return $"ID: {BookId}" +
+               $"\nTitulo: {Title}" +
+               $"\nAutor: {Author}";
     }
 }

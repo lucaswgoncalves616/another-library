@@ -29,16 +29,23 @@ public class Library
 
     public static void NewLoan(int bookId, int userId, String loanStartDate, String loanEndDate)
     {
-        LoanRelation.NewLoanRelation(bookId, userId, loanStartDate, loanEndDate);
-        
         int bookIndex ;
         foreach (Book book in books)
         {
-            if (book.BookId == bookId)
+            if (book.IsLoaned)
             {
+                Console.WriteLine("Livro Indisponivel");
+                break;
+            } else if (book.BookId == bookId)
+            {
+                LoanRelation.NewLoanRelation(bookId, userId, loanStartDate, loanEndDate);
                 book.LoanBook();
+                Console.WriteLine("Livro emprestado com sucesso!");
+                break;
             }
+            
         }
+
         
     }
 

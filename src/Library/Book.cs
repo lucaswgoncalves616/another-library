@@ -27,7 +27,7 @@ public class Book : ILoanable
         Author = author;
     }
 
-    public void LoanBook(User user)
+    public void LoanBook()
     {
         IsLoaned = true;
     }
@@ -39,7 +39,7 @@ public class Book : ILoanable
     
     public override string ToString()
     {
-        return $"ID: {BookId}" +
+        return $"\nID: {BookId}" +
                $"\nTitulo: {Title}" +
                $"\nAutor: {Author}";
     }

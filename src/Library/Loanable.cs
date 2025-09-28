@@ -2,7 +2,7 @@
 
 public interface ILoanable
 {
-    void LoanBook(User user);
+    void LoanBook();
 
     void ReturnBook();
 }

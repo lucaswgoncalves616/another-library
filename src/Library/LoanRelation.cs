@@ -32,6 +32,11 @@ public class LoanRelation
         loans.Add(new LoanRelation(bookId, userId, loanDate, endLoanDate));
     }
 
+    public static List<LoanRelation> GetLoanList()
+    {
+        return loans;
+    }
+    
     public static void EndLoanRelation(int loanId)
     {
         int loanIndex ;
@@ -45,6 +50,19 @@ public class LoanRelation
             }
         }
     }
+
+    public static int GetBookId(int loanId)
+    {
+        int loanIndex;
+        foreach (LoanRelation loan in loans)
+        {
+            if (loan.LoanId == loanId)
+            {
+                return loan.BookId;
+            }
+        }
+        return 0;
+    }
     
 
     public static void ShowAllLoans()
@@ -57,7 +75,7 @@ public class LoanRelation
 
     public override string ToString()
     {
-        return $"\nID: {LoanId}" +
+        return $"\nID Empréstimo: {LoanId}" +
                $"\nID do usuario: {UserId}" +
                $"\nID do livro: {BookId}" +
                $"\nData de empréstimo: {LoanDate}" +

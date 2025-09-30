@@ -2,7 +2,7 @@
 
 public class LoanRelation
 {
-    static List<LoanRelation> loans = new List<LoanRelation>();
+    public static List<LoanRelation> loans = new List<LoanRelation>();
     
     public int LoanId { get; set; }
     private static int loanNextId = 1;
@@ -15,10 +15,10 @@ public class LoanRelation
     
     public int BookId { get; set; }
     public int UserId { get; set; }
-    public String LoanDate { get; set; }
-    public String EndLoanDate { get; set; }
+    public DateOnly LoanDate { get; set; }
+    public DateOnly EndLoanDate { get; set; }
 
-    public LoanRelation(int bookId, int userId, string loanDate, string endLoanDate)
+    public LoanRelation(int bookId, int userId, DateOnly loanDate, DateOnly endLoanDate)
     {
         LoanId = LoanNextId++;
         BookId = bookId;
@@ -27,7 +27,7 @@ public class LoanRelation
         EndLoanDate = endLoanDate;
     }
 
-    public static void NewLoanRelation(int bookId, int userId, String loanDate, String endLoanDate)
+    public static void NewLoanRelation(int bookId, int userId, DateOnly loanDate, DateOnly endLoanDate)
     {
         loans.Add(new LoanRelation(bookId, userId, loanDate, endLoanDate));
     }

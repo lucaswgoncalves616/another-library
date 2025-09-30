@@ -27,7 +27,7 @@ public class Library
         books.Add(new Book(title, author));
     }
 
-    public static void NewLoan(int bookId, int userId, String loanStartDate, String loanEndDate)
+    public static void NewLoan(int bookId, int userId, DateOnly loanStartDate, DateOnly loanEndDate)
     {
         int bookIndex ;
         foreach (Book book in books)
@@ -64,10 +64,13 @@ public class Library
                     if (book.BookId == LoanRelation.GetBookId(loanId))
                     {
                         book.ReturnBook();
+                        break;
                     }
                 }
             }
         }
+        
+        Console.WriteLine("Livro devolvido!");
     }
     
     public static void showAllBooks()

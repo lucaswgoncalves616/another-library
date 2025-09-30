@@ -25,8 +25,8 @@ public abstract class User
 
     public override string ToString()
     {
-        return $"\nID: {Id}" +
+        return $"ID: {Id}" +
                $"\nNome: {Name}" +
-               $"\nEmail: {Email}";
+               $"\nEmail: {Email}\n";
     }
 }

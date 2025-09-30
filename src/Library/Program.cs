@@ -4,6 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
+        DateOnly dateToday = DateOnly.FromDateTime(System.DateTime.Now);
+        DateOnly endDate = dateToday.AddDays(21);
+        
+        
         List<User> students = new List<User>();
         List<User> teachers = new List<User>();
 
@@ -15,13 +19,65 @@ class Program
         students.Add(new Student("Pedro Alves", "pedro.alves@hotmail.com"));
         students.Add(new Student("Ana Costa", "ana.costa@hotmail.com"));
         
-        Library.NewLoan(Library.Books[3].BookId, students[0].Id, "12-jan", "15-fev");
-        Library.NewLoan(Library.Books[2].BookId, students[1].Id, "13-fev", "16-mar");
-        Library.NewLoan(Library.Books[0].BookId, students[2].Id, "14-mar", "17-abr");
-        
-        LoanRelation.ShowAllLoans();
-        
+        int response = 0;
+        int userId;
+        int bookId;
+        int endLoanId;
+        while (response != 4)
+        {
+            Console.WriteLine("\nDigite a opção que deseja: " +
+                              "\n1. Mostrar livros disponiveis" +
+                              "\n2. Emprestar livro" +
+                              "\n3. Devolver livro" +
+                              "\n4. Sair");
+            response = Convert.ToInt32(Console.ReadLine());
+            
+            switch (response)
+            {
+                case 1:
+                    Library.showAllBooks();
+                    break;
+                case 2:
+                    Console.WriteLine("\nProfessores cadastrados: ");
+                    foreach (User teacher in teachers)
+                    {
+                        Console.WriteLine(teacher);
+                    }
+                    
+                    Console.WriteLine("Alunos cadastrados: \n");
+                    foreach (User student in students)
+                    {
+                        Console.WriteLine(student);
+                    }
 
+                    Console.WriteLine("\nDigite o ID do Usuário que vai fazer o emprestimo:");
+                    userId = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("\nDigite o ID do livro que será emprestado:");
+                    bookId = Convert.ToInt32(Console.ReadLine());
+                    
+                    Library.NewLoan(bookId, userId, dateToday, endDate);
+                    LoanRelation.ShowAllLoans();
+                    break;
+                case 3:
+                    if (LoanRelation.loans.Count == 0)
+                    {
+                        Console.WriteLine("\nNenhum emprestimo pendente...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nEmprestimos pendentes: ");
+                        LoanRelation.ShowAllLoans();
+
+                        Console.WriteLine("\nDigite o ID do emprestimo que deseja encerrar: ");
+                        endLoanId = Convert.ToInt32(Console.ReadLine());
+                        
+                        Library.EndLoan(endLoanId);
+                    }
+                    break;
+            }
+        }
+        
         //Console.ReadKey();
     }
 }

@@ -43,10 +43,7 @@ public class Library
                 Console.WriteLine("Livro emprestado com sucesso!");
                 break;
             }
-            
         }
-
-        
     }
 
     public static void EndLoan(int loanId) 

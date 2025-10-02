@@ -53,7 +53,6 @@ public class LoanRelation
 
     public static int GetBookId(int loanId)
     {
-        int loanIndex;
         foreach (LoanRelation loan in loans)
         {
             if (loan.LoanId == loanId)

@@ -32,12 +32,13 @@ public class Library
         int bookIndex ;
         foreach (Book book in books)
         {
-            if (book.IsLoaned)
+            if (book.BookId == bookId)
             {
-                Console.WriteLine("Livro Indisponivel");
-                break;
-            } else if (book.BookId == bookId)
-            {
+                if (book.IsLoaned)
+                {
+                    Console.WriteLine("Livro Indisponivel");
+                    break;
+                }
                 LoanRelation.NewLoanRelation(bookId, userId, loanStartDate, loanEndDate);
                 book.LoanBook();
                 Console.WriteLine("Livro emprestado com sucesso!");
@@ -46,27 +47,28 @@ public class Library
         }
     }
 
-    public static void EndLoan(int loanId) 
+    public static void EndLoan(int loanId)
     {
+        int bookId = LoanRelation.GetBookId(loanId);
+        
         var loanListCopy = LoanRelation.GetLoanList().ToList();
-        int loanIndex;
         
         foreach (LoanRelation loan in loanListCopy)
         {
             if (loan.LoanId == loanId)
             {
                 LoanRelation.EndLoanRelation(loanId);
-                foreach (Book book in books)
-                {
-                    if (book.BookId == LoanRelation.GetBookId(loanId))
-                    {
-                        book.ReturnBook();
-                        break;
-                    }
-                }
             }
         }
         
+        foreach (Book book in books)
+        {
+            if (book.BookId == bookId)
+            {
+                book.ReturnBook();
+                break;
+            }
+        }
         Console.WriteLine("Livro devolvido!");
     }
     

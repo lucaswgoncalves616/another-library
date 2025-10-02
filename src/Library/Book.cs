@@ -41,6 +41,7 @@ public class Book : ILoanable
     {
         return $"\nID: {BookId}" +
                $"\nTitulo: {Title}" +
-               $"\nAutor: {Author}";
+               $"\nAutor: {Author}" +
+               "\nStatus: " + (IsLoaned ? "Não disponivel" : "Disponivel");
     }
 }

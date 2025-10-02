@@ -62,8 +62,19 @@ public class LoanRelation
         }
         return 0;
     }
-    
 
+    public static int GetUserId(int loanId)
+    {
+        foreach (LoanRelation loan in loans)
+        {
+            if (loan.LoanId == loanId)
+            {
+                return loan.UserId;
+            }
+        }
+        return 0;
+    }
+    
     public static void ShowAllLoans()
     {
         foreach (LoanRelation loan in loans)

@@ -29,9 +29,11 @@ public class Library
 
     public static void NewLoan(int bookId, int userId, DateOnly loanStartDate, DateOnly loanEndDate)
     {
-        int bookIndex ;
+        int userid = userId;
         foreach (Book book in books)
-        {
+        {   
+            // Continuar a partir aqui criando a lógica para pegar a quantidade de livros do objeto usuario :) ☝️👌
+            
             if (book.BookId == bookId)
             {
                 if (book.IsLoaned)

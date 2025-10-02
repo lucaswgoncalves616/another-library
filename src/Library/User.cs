@@ -16,8 +16,7 @@ public abstract class User
     
     private int loans = 0;
     public int Loans {get => loans;  set => loans = value; }
-
-
+    
     protected User(string name, string email)
     {
         Id = NextId++;

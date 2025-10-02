@@ -2,7 +2,7 @@
 
 public class Library
 {
-    private static List<Book> books = new List<Book>
+    private static List<Book> _books = new List<Book>
     {
         new Book("Orgulho e Preconceito", "Jane Austen"),
         new Book("1984", "George Orwell"),
@@ -18,31 +18,60 @@ public class Library
     };
     public static List<Book> Books
     {
-        get => books;
-        set => books = value;
+        get => _books;
+        set => _books = value;
+    }
+
+    private static List<User> _users = new List<User>
+    {
+        new Teacher("Patrícia Santos", "patricia.santos@escola.edu"),
+        new Teacher("Roberto Lima", "roberto.lima@escola.edu"),
+        new Teacher("Adriana Melo", "adriana.melo@escola.edu"),
+
+        new Student("Maria Silva", "maria.silva@hotmail.com"),
+        new Student("Pedro Alves", "pedro.alves@hotmail.com"),
+        new Student("Ana Costa", "ana.costa@hotmail.com")
+    };
+
+    public static List<User> Users
+    {
+        get => _users;
+        set => _users = value;
+    }
+    
+    public static User GetUserById(int userId)
+    {
+        foreach (User user in Users)
+        {
+            if (user.Id == userId)
+            {
+                return user;
+            }
+        }
+        return null;
     }
 
     public static void AddNewBook(String title, String author)
     {
-        books.Add(new Book(title, author));
+        _books.Add(new Book(title, author));
     }
 
     public static void NewLoan(int bookId, int userId, DateOnly loanStartDate, DateOnly loanEndDate)
     {
         int userid = userId;
-        foreach (Book book in books)
+        foreach (Book book in _books)
         {   
-            // Continuar a partir aqui criando a lógica para pegar a quantidade de livros do objeto usuario :) ☝️👌
             if (book.BookId == bookId)
             {
                 if (book.IsLoaned)
                 {
-                    Console.WriteLine("Livro Indisponivel");
+                    Console.WriteLine("\nLivro Indisponivel");
                     break;
                 }
                 LoanRelation.NewLoanRelation(bookId, userId, loanStartDate, loanEndDate);
+                IncreaseUserLoan(userId);
                 book.LoanBook();
-                Console.WriteLine("Livro emprestado com sucesso!");
+                Console.WriteLine("\nLivro emprestado com sucesso!");
                 break;
             }
         }
@@ -51,7 +80,6 @@ public class Library
     public static void EndLoan(int loanId)
     {
         int bookId = LoanRelation.GetBookId(loanId);
-        
         var loanListCopy = LoanRelation.GetLoanList().ToList();
         
         foreach (LoanRelation loan in loanListCopy)
@@ -62,7 +90,7 @@ public class Library
             }
         }
         
-        foreach (Book book in books)
+        foreach (Book book in _books)
         {
             if (book.BookId == bookId)
             {
@@ -71,23 +99,35 @@ public class Library
             }
         }
         
-        Console.WriteLine("Livro devolvido!");
+        Console.WriteLine("\nLivro devolvido!");
     }
     
     public static void showAllBooks()
     {
-        foreach (Book book in books)
+        foreach (Book book in _books)
         {
             Console.WriteLine(book);
         }
     }
 
-    public static bool CanLoanBook(User user)
+    public static bool CanUserLoan(User user)
     {
         if (user.Loans < user.getLoansLimit())
         {
             return true;
         }
         return false;
+    }
+
+    public static void IncreaseUserLoan(int userId)
+    {
+        User user = GetUserById(userId);
+        user.Loans++;
+    }
+    
+    public static void DecreaseUserLoan(int userId)
+    {
+        User user = GetUserById(userId);
+        user.Loans--;
     }
 }

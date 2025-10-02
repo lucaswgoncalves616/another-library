@@ -11,4 +11,12 @@ public class Student : User
     {
         return 2;
     }
+    
+    public override string ToString()
+    {
+        return $"ID do aluno: {Id}" +
+               $"\nNome: {Name}" +
+               $"\nEmail: {Email}" +
+               $"\nEmprestimos ativos: {Loans}\n";
+    }
 }

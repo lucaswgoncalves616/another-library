@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\2DM\\.nuget\\packages\\": {}
+    "C:\\Users\\Lucas Wendell\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\2DM\\RiderProjects\\another-library\\src\\Library\\Library.csproj",
+      "projectUniqueName": "C:\\Users\\Lucas Wendell\\RiderProjects\\another-library\\src\\Library\\Library.csproj",
       "projectName": "Library",
-      "projectPath": "C:\\Users\\2DM\\RiderProjects\\another-library\\src\\Library\\Library.csproj",
-      "packagesPath": "C:\\Users\\2DM\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\2DM\\RiderProjects\\another-library\\src\\Library\\obj\\",
+      "projectPath": "C:\\Users\\Lucas Wendell\\RiderProjects\\another-library\\src\\Library\\Library.csproj",
+      "packagesPath": "C:\\Users\\Lucas Wendell\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lucas Wendell\\RiderProjects\\another-library\\src\\Library\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\2DM\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Lucas Wendell\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Lucas Wendell\\.dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

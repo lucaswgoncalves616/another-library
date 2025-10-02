@@ -6,12 +6,9 @@ public class Student : User
     {
         
     }
-
-    private int loanLimit = 2;
-    public int LoanLimit {get => loanLimit;}
     
     public override int getLoansLimit()
     {
-        return loanLimit;
+        return 2;
     }
 }

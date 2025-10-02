@@ -63,11 +63,14 @@ class Program
 
                     Console.WriteLine("\nDigite o ID do Usuário que vai fazer o emprestimo:");
                     userId = Convert.ToInt32(Console.ReadLine());
+                    
 
                     Console.WriteLine("\nDigite o ID do livro que será emprestado:");
                     bookId = Convert.ToInt32(Console.ReadLine());
                     
                     Library.NewLoan(bookId, userId, dateToday, endDate);
+                    
+                    
                     LoanRelation.ShowAllLoans();
                     break;
                 case 4:

@@ -13,6 +13,10 @@ public abstract class User
 
     public String Name { get; set; }
     public String Email { get; set; }
+    
+    private int loans = 0;
+    public int Loans {get => loans;  set => loans = value; }
+
 
     protected User(string name, string email)
     {
@@ -29,4 +33,5 @@ public abstract class User
                $"\nNome: {Name}" +
                $"\nEmail: {Email}\n";
     }
+    
 }

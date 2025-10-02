@@ -33,7 +33,6 @@ public class Library
         foreach (Book book in books)
         {   
             // Continuar a partir aqui criando a lógica para pegar a quantidade de livros do objeto usuario :) ☝️👌
-            
             if (book.BookId == bookId)
             {
                 if (book.IsLoaned)
@@ -71,6 +70,7 @@ public class Library
                 break;
             }
         }
+        
         Console.WriteLine("Livro devolvido!");
     }
     
@@ -80,5 +80,14 @@ public class Library
         {
             Console.WriteLine(book);
         }
+    }
+
+    public static bool CanLoanBook(User user)
+    {
+        if (user.Loans < user.getLoansLimit())
+        {
+            return true;
+        }
+        return false;
     }
 }

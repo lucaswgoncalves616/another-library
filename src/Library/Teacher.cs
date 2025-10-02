@@ -7,11 +7,8 @@ public class Teacher : User
         
     }
 
-    private int loanLimit = 5;
-    public int LoanLimit {get => loanLimit;}
-    
     public override int getLoansLimit()
     {
-        return loanLimit;
+        return 5;
     }
 }

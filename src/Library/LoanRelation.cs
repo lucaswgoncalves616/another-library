@@ -27,6 +27,7 @@ public class LoanRelation
         EndLoanDate = endLoanDate;
     }
 
+    // Cria a relação Livro x Usuário em um array na classe
     public static void NewLoanRelation(int bookId, int userId, DateOnly loanDate, DateOnly endLoanDate)
     {
         loans.Add(new LoanRelation(bookId, userId, loanDate, endLoanDate));
@@ -37,7 +38,8 @@ public class LoanRelation
         return loans;
     }
     
-    public static void EndLoanRelation(int loanId)
+    // Remove a relação Livro x Usuário assim que o livro é devolvido
+    public static void EndLoanRelation(int loanId) 
     {
         int loanIndex ;
         foreach (LoanRelation loan in loans)
@@ -51,6 +53,7 @@ public class LoanRelation
         }
     }
 
+    // Retorna o ID do livro recebendo o ID do emprestimo como parametro
     public static int GetBookId(int loanId)
     {
         foreach (LoanRelation loan in loans)

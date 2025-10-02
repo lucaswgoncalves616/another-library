@@ -39,6 +39,7 @@ public class Library
         set => _users = value;
     }
     
+    // Retorna um objeto User recebendo o ID como parametro
     public static User GetUserById(int userId)
     {
         foreach (User user in Users)
@@ -50,12 +51,14 @@ public class Library
         }
         return null;
     }
-
+    
     public static void AddNewBook(String title, String author)
     {
         _books.Add(new Book(title, author));
     }
 
+    // Cria um novo emprestimo e chama o método na classe "LoanRelation" para criar a relação Livro x Usuário
+    // e também muda o status de emprestado do livro com o método "LoanBook()"
     public static void NewLoan(int bookId, int userId, DateOnly loanStartDate, DateOnly loanEndDate)
     {
         int userid = userId;
@@ -77,6 +80,8 @@ public class Library
         }
     }
 
+    // Remove a relação Livro X Usuário na classe "LoanRelation"
+    // e altera o status de emprestado no livro com o método "ReturnBook()"
     public static void EndLoan(int loanId)
     {
         int bookId = LoanRelation.GetBookId(loanId);
@@ -110,6 +115,7 @@ public class Library
         }
     }
 
+    // Verifica se o usuário pode fazer o emprestimo baseado na quantidade de emprestimos ativos
     public static bool CanUserLoan(User user)
     {
         if (user.Loans < user.getLoansLimit())

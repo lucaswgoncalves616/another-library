@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Guarda a data atual em uma variavel e acrescenta 21 dias a variavel
+        // para simular o fim do emprestimo do livro
         DateOnly dateToday = DateOnly.FromDateTime(System.DateTime.Now);
         DateOnly endDate = dateToday.AddDays(21);
         
@@ -14,7 +16,7 @@ class Program
         while (response != 6)
         {
             Console.WriteLine("\nDigite a opção que deseja: " +
-                              "\n1. Mostrar livros disponiveis" +
+                              "\n1. Mostrar livros cadastrados" +
                               "\n2. Mostrar usuários cadastrados" +
                               "\n3. Mostrar emprestimos pendentes" +
                               "\n4. Emprestar livro" +
@@ -24,7 +26,7 @@ class Program
             
             switch (response)
             {
-                case 1:
+                case 1: // Mostrar livros
                     Library.showAllBooks();
                     break;
                 case 2: // Mostrar Usuarios
